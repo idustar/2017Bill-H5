@@ -1,0 +1,884 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+    <title>2017申花年度账单</title>
+    <link href="dist/EasySlide.css" rel="stylesheet">
+    <script src="dist/EasySlide.js"></script>
+    <script src="dist/loader.js"></script>
+    <!--<script src="../src/ppt.js"></script>-->
+    <script src="dist/effects.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            border: none;
+            font-family: Arial;
+            -webkit-text-size-adjust: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -ms-touch-action: none;
+            -webkit-font-smoothing: antialiased;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+            -ms-user-select: none;
+            background: #060a10;
+            color: #ffffff;
+        }
+
+        #arrow {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            height: 50px;
+            background: url(images/arrow.png) center center no-repeat;
+            background-size: 50px;
+            -webkit-animation: bottomArrow 1.5s ease 0 infinite;
+        }
+
+        @-webkit-keyframes bottomArrow {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                -webkit-transform: translate3d(0, -15px, 0);
+                opacity: 1;
+            }
+            100% {
+                -webkit-transform: translate3d(0, -25px, 0);
+                opacity: 0;
+            }
+        }
+
+        #wrapAll {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #wrapAll > .slides {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-transition: -webkit-transform 0.5s ease;
+            overflow: hidden;
+        }
+
+        .groups {
+            display: none;
+        }
+
+        .groups .animate {
+            opacity: 0;
+        }
+
+        .groups > div {
+            position: absolute;
+            line-height: 22px;
+            font-weight: bold;
+        }
+
+        #frame0, #frame2 {
+            background: url(images/page1.jpg) no-repeat center center;
+            background-size: 100%;
+        }
+
+        #frame1 {
+            background: url(images/background.jpg) no-repeat center top;
+            background-size: 100%;
+        }
+
+        .shareBtns {
+            width: 100%;
+        }
+
+        .shareBtns > div {
+            border: 1px solid #f3c178;
+            color: #f3c178;
+            text-align: center;
+            padding: 5px;
+            margin: 5px 0;
+            font-size: 14px;
+            background: rgba(255, 255, 255, .1);
+        }
+
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
+
+        .flayer {
+            display: none;
+        }
+
+        .narrowLayer {
+            width: 85%;
+            left: 7.5%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 50px 0 40px;
+        }
+
+        .flayerInner {
+            background: -webkit-gradient(linear, left top, left bottom, from(rgba(125, 134, 158, 0)), color-stop(0.15, rgba(125, 134, 158, 1)), color-stop(0.8, rgba(125, 134, 158, 1)), to(rgba(125, 134, 158, 0)));
+            height: 100%;
+        }
+
+        .borderL, .borderR {
+            width: 1px;
+            height: 100%;
+            background: -webkit-gradient(linear, left top, left bottom, from(rgba(243, 193, 120, 0)), color-stop(0.15, rgba(243, 193, 120, 1)), color-stop(0.8, rgba(243, 193, 120, 1)), to(rgba(243, 193, 120, 0)));
+        }
+
+        .borderL {
+            float: left;
+        }
+
+        .borderR {
+            float: right;
+        }
+
+        .text1 {
+            padding: 40px 25px;
+            color: #fff;
+            font-size: 13px;
+            line-height: 20px;
+        }
+
+        .contentWrap1 {
+            padding: 30px 0;
+        }
+
+        .imageWrap1 {
+            width: 100%;
+            background: #fff;
+            text-align: right;
+        }
+
+        .imageWrap2 {
+            width: 100%;
+            background: #000;
+            text-align: right;
+        }
+
+        .imageWrap1 img, .imageWrap2 img {
+            width: 99%;
+            border: none;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .contentWrap2 {
+            height: 10px;
+            padding: 20px;
+        }
+
+        .watchName {
+            float: left;
+        }
+
+        .text2 {
+            padding: 20px 25px;
+            color: #fff;
+            font-size: 12px;
+            line-height: 18px;
+        }
+
+        .shareLayer {
+            width: 100%;
+            height: 100%;
+            background: #060a10 url(images/cover.jpg) no-repeat center top;
+            background-size: 100%;
+            display: none;
+        }
+
+        .shareLayer > div {
+            position: absolute;
+        }
+
+        headicon {
+            float: left;
+            width: 64px;
+            height: 64px;
+            border-radius: 32px;
+            border: 1px solid #ffcf83;
+        }
+
+        .headicon img {
+            display: block;
+            border: none;
+            border-radius: 32px;
+            width: 64px;
+        }
+
+        .twit {
+            float: right;
+            width: 195px;
+        }
+
+        .title {
+            font-size: 15px;
+            height: 28px;
+            line-height: 25px;
+        }
+
+        .text3 {
+            font-size: 12px;
+            color: #fff;
+            line-height: 18px;
+        }
+
+        #subppt1 {
+            position: absolute;
+            width: 100%;
+            top: 18%;
+            left: 0;
+        }
+
+        #weixin_bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 998;
+            background: rgba(0, 0, 0, .6);
+            display: none;
+        }
+
+        .share_icon {
+            clear: both;
+            padding: 10px;
+            text-align: right;
+        }
+
+        #loadingWrap {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            font-size: 14px;
+            line-height: 20px;
+            -webkit-transition: -webkit-transform 0.4s ease;
+            background: #060a10;
+        }
+
+        #loadingWrap div {
+            margin: 170px auto 0;
+            text-align: center;
+        }
+
+        div#loading {
+            margin: 15px auto 0;
+        }
+
+        .shareImgWrap {
+            display: none;
+        }
+
+        .imgheader {
+            width: 100%;
+            height: 25%;
+            background: url(images/header.png) no-repeat center center;
+            background-size: 70%;
+            top: 10%;
+        }
+
+        .imgopen {
+            width: 100%;
+            height: 25%;
+            background: url(images/openbutton.png) no-repeat top center;
+            background-size: 40%;
+            top: 45%;
+        }
+
+        .imgnew {
+            width: 100%;
+            height: 28%;
+            background: url(images/new.png) no-repeat top center;
+            background-size: 50%;
+            top: 40%;
+        }
+
+        .imgnew1 {
+
+        }
+        .imgfooter>img {
+            width: 100%;
+        }
+
+        .imgfooter {
+            width: 30%;
+            height: 39%;
+            background-size: 40%;
+            top: 60%;
+            left: 35%;
+        }
+
+        .imgshare {
+            width: 100%;
+            height: 22%;
+            background: url(images/sharebtn.png) no-repeat top center;
+            background-size: 40%;
+            top: 35%;
+        }
+
+        .imghead {
+            width: 100%;
+            height: 150px;
+            background: url(images/head.png) no-repeat center center;
+            background-size: 250px;
+            top: 0px;
+        }
+
+        .imgqrcode {
+            width: 60%;
+            height: 15%;
+            background: url(images/qrcode.png) no-repeat center right;
+            background-size: 200px;
+            bottom: 0;
+            right: 0
+        }
+
+        .imgt8 {
+            width: 400px;
+            height: 300px;
+            background: url(images/t8.png) no-repeat center center;
+            background-size: 350px;
+            left: -20px;
+            top: 90px;
+        }
+
+        .imgs8 {
+            width: 250px;
+            height: 150px;
+            background: url(images/s8.png) no-repeat center center;
+            background-size: 250px;
+            bottom: 50px;
+            right: 0px
+        }
+
+        .imgt0 {
+            width: 350px;
+            height: 300px;
+            background: url(images/t0.png) no-repeat center center;
+            background-size: 300px;
+            top: 90px;
+            left: -20px;
+        }
+
+        .imgs0 {
+            width: 250px;
+            height: 150px;
+            background: url(images/s0.png) no-repeat center center;
+            background-size: 250px;
+            bottom: 50px;
+            right: 0px
+        }
+
+        .imgt1 {
+            width: 400px;
+            height: 300px;
+            background: url(images/t1.png) no-repeat center center;
+            background-size: 350px;
+            top: 90px;
+            left: -20px;
+        }
+
+        .imgs1 {
+            width: 250px;
+            height: 150px;
+            background: url(images/s1.png) no-repeat center center;
+            background-size: 250px;
+            bottom: 50px;
+            right: 0px
+        }
+
+        .imgt2 {
+            width: 400px;
+            height: 300px;
+            background: url(images/t2.png) no-repeat center center;
+            background-size: 300px;
+            top: 90px;
+            left: -40px;
+        }
+
+        .imgs2 {
+            width: 250px;
+            height: 150px;
+            background: url(images/s2.png) no-repeat center center;
+            background-size: 250px;
+            bottom: 50px;
+            right: 0px
+        }
+
+        .imgt3 {
+            width: 400px;
+            height: 300px;
+            background: url(images/t3.png) no-repeat center center;
+            background-size: 350px;
+            top: 90px;
+            left: -20px;
+        }
+
+        .imgs3 {
+            width: 250px;
+            height: 150px;
+            background: url(images/s3.png) no-repeat center center;
+            background-size: 250px;
+            bottom: 50px;
+            right: 0px
+        }
+
+        .imgt4 {
+            width: 400px;
+            height: 300px;
+            background: url(images/t4.png) no-repeat center center;
+            background-size: 350px;
+            top: 90px;
+            left: -20px;
+        }
+
+        .imgs4 {
+            width: 250px;
+            height: 150px;
+            background: url(images/s4.png) no-repeat center center;
+            background-size: 250px;
+            bottom: 50px;
+            right: 0px
+        }
+
+        .imgt5 {
+            width: 400px;
+            height: 300px;
+            background: url(images/t5.png) no-repeat center center;
+            background-size: 350px;
+            top: 90px;
+            left: -20px;
+        }
+
+        .imgs5 {
+            width: 250px;
+            height: 150px;
+            background: url(images/s5.png) no-repeat center center;
+            background-size: 250px;
+            bottom: 50px;
+            right: 0px
+        }
+
+        .imgt6 {
+            width: 400px;
+            height: 300px;
+            background: url(images/t6.png) no-repeat center center;
+            background-size: 350px;
+            top: 90px;
+            left: -20px;
+        }
+
+        .imgs6 {
+            width: 250px;
+            height: 150px;
+            background: url(images/s6.png) no-repeat center center;
+            background-size: 250px;
+            bottom: 50px;
+            right: 0px
+        }
+
+        .imgt7 {
+            width: 350px;
+            height: 300px;
+            background: url(images/t7.png) no-repeat center center;
+            background-size: 300px;
+            top: 90px;
+            left: -20px;
+        }
+
+        .imgs7 {
+            width: 250px;
+            height: 150px;
+            background: url(images/s7.png) no-repeat center center;
+            background-size: 250px;
+            bottom: 50px;
+            right: 0px
+        }
+
+        .futurecql {
+            top: 202px;
+            left: 108px;
+            font-size: 40px;
+            text-align: center;
+            color: goldenrod;
+            width: 100px;
+        }
+
+        .futureyz {
+            top: 245px;
+            left: 80px;
+            font-size: 40px;
+            text-align: center;
+            color: goldenrod;
+            width: 100px;
+        }
+
+        .futureplace {
+            top: 287px;
+            left: 160px;
+            font-size: 35px;
+            color: goldenrod;
+        }
+
+        .gzh {
+            top: 245px;
+            left: 120px;
+            font-size: 35px;
+            text-align: center;
+            color: goldenrod;
+            width: 100px;
+        }
+
+        .djn {
+            top: 200px;
+            left: 175px;
+            font-size: 40px;
+            text-align: center;
+            color: goldenrod;
+            width: 100px;
+        }
+
+        .zhandou {
+            top: 205px;
+            left: 185px;
+            font-size: 40px;
+            text-align: center;
+            color: goldenrod;
+            width: 100px;
+        }
+
+        .cql {
+            top: 242px;
+            left: 135px;
+            font-size: 40px;
+            text-align: center;
+            color: goldenrod;
+            width: 100px;
+        }
+
+        .cqkt {
+            top: 245px;
+            left: 152px;
+            font-size: 30px;
+            text-align: center;
+            color: goldenrod;
+            width: 100px;
+        }
+
+        .shanghai {
+            top: 245px;
+            left: 15px;
+            font-size: 40px;
+            text-align: center;
+            color: goldenrod;
+            width: 100px;
+        }
+
+        .yuanzheng {
+            top: 200px;
+            left: 110px;
+            font-size: 40px;
+            text-align: center;
+            color: goldenrod;
+            width: 100px;
+        }
+
+        .zuiyuan {
+            top: 245px;
+            left: 160px;
+            font-size: 35px;
+            color: goldenrod;
+        }
+
+        .kaixiao {
+            top: 245px;
+            left: 80px;
+            font-size: 35px;
+            color: goldenrod;
+        }
+
+        .huale {
+            top: 290px;
+            left: 150px;
+            font-size: 35px;
+            text-align: center;
+            color: goldenrod;
+            width: 100px;
+        }
+
+        .daidao {
+            top: 242px;
+            left: 210px;
+            font-size: 35px;
+            text-align: center;
+            color: goldenrod;
+            width: 100px;
+        }
+
+        .caishui {
+            top: 277px;
+            left: 55px;
+            font-size: 35px;
+            text-align: center;
+            color: goldenrod;
+            width: 100px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="shareImgWrap"><img src="images/cover.jpg"/></div>
+<div class="EasySlide-warp" id="wrapAll">
+    <!--
+      每个大的frame，里面包含若干个group，也就是用户上划下划，有可能是frame里面的各个group切换
+      每个group里面包含若干元素，有动画的元素拥有animate的属性
+      每个元素出来、消失的动画定义在in和out属性里，动画执行的先后顺序靠时间delay来标识
+      group上面的allowswipe标志，表示是否允许用户通过上下滑动来进行切换
+      allowswipe为prev表示只能去上一张，next为只能去下一张，no为禁止上下滑动切换
+      goto属性表明这是一个跳转的链接，点击直接跳转到某个frame
+      flayerbtn属性表示点击之后出浮层，对应浮层的id记录在layerid属性里
+      className里面有flayer属性，表示本身是浮层；triggerLayer表示触发这个浮层显示的flayerbtn，这个属性只在需要通过浮层找到源触发器的情况下才使用到
+    -->
+    <div id="frame0" index="0" class="EasySlide-slides slides">
+        <div class="EasySlide-groups groups" gIndex="0" allowswipe="no">
+            <div class="imgheader EasySlide-animate" in="zoomIn" delay=".5s"></div>
+            <div class="imgopen EasySlide-animate goto" in="zoomIn" delay="1s" goto="1"></div>
+            <div class="imgfooter EasySlide-animate" in="fadeInUp" delay=".5s"><img src="images/footer.png" /></div>
+        </div>
+    </div>
+    <div id="frame1" index="1" class="EasySlide-slides slides">
+
+        <div class="EasySlide-groups groups izhandou" gIndex="0" allowswipe="next">
+            <div class="imghead EasySlide-animate" in="fadeInDown" delay=".5s"></div>
+            <div class="imgqrcode EasySlide-animate" in="fadeInUp" delay=".5s"></div>
+
+
+
+            <div class="imgt imgt2 EasySlide-animate" in="fadeInUp"></div>
+            <div class="imgs imgs2 EasySlide-animate" in="fadeInUp"></div>
+
+            <div class="zhandou EasySlide-animate" in="zoomIn" delay="1s">0</div>
+            <div class="cql EasySlide-animate" in="zoomIn" delay="1.5s">0</div>
+
+
+
+        </div>
+        <div class="EasySlide-groups groups icqkt" gIndex="1">
+            <div class="imghead"></div>
+            <div class="imgqrcode"></div>
+
+            <div class="imgt imgt3 EasySlide-animate" in="fadeInUp"></div>
+            <div class="imgs imgs3 EasySlide-animate" in="fadeInUp"></div>
+
+            <div class="cqkt EasySlide-animate" in="zoomIn" delay=".5s">-</div>
+
+        </div>
+        <div class="EasySlide-groups groups ishanghai" gIndex="2">
+            <div class="imghead"></div>
+            <div class="imgqrcode"></div>
+
+            <div class="imgt imgt4 EasySlide-animate" in="fadeInUp"></div>
+            <div class="imgs imgs4 EasySlide-animate" in="fadeInUp"></div>
+
+            <div class="shanghai EasySlide-animate" in="zoomIn" delay=".5s">0</div>
+
+        </div>
+        <div class="EasySlide-groups groups iyuanzheng" gIndex="3">
+            <div class="imghead"></div>
+            <div class="imgqrcode"></div>
+
+
+            <div class="imgt imgt5 EasySlide-animate" in="fadeInUp"></div>
+            <div class="imgs imgs5 EasySlide-animate" in="fadeInUp"></div>
+
+            <div class="yuanzheng EasySlide-animate" in="zoomIn" delay=".5s">0</div>
+            <div class="zuiyuan EasySlide-animate" in="zoomIn" delay="1s">上海</div>
+
+        </div>
+        <div class="EasySlide-groups groups ihuale" gIndex="4">
+            <div class="imghead"></div>
+            <div class="imgqrcode"></div>
+
+
+            <div class="imgt imgt6 EasySlide-animate" in="fadeInUp"></div>
+            <div class="imgs imgs6 EasySlide-animate" in="fadeInUp"></div>
+
+            <div class="huale EasySlide-animate" in="zoomIn" delay="1s">0</div>
+            <div class="kaixiao EasySlide-animate" in="zoomIn" delay=".5s"></div>
+
+        </div>
+        <div class="EasySlide-groups groups idaidao icaishui" gIndex="5">
+            <div class="imghead"></div>
+            <div class="imgqrcode"></div>
+
+            <div class="imgt imgt7 EasySlide-animate" in="fadeInUp"></div>
+            <div class="imgs imgs7 EasySlide-animate" in="fadeInUp"></div>
+
+            <div class="daidao EasySlide-animate" in="zoomIn" delay=".5s">-</div>
+            <div class="caishui EasySlide-animate" in="zoomIn" delay="1s">-</div>
+        </div>
+        <div class="EasySlide-groups groups igzh" gIndex="6">
+            <div class="imghead"></div>
+            <div class="imgqrcode"></div>
+
+
+
+
+            <div class="imgt imgt0 EasySlide-animate" in="zoomIn" delay=".5s"></div>
+            <div class="imgs imgs0 EasySlide-animate" in="zoomIn" delay=".5s"></div>
+
+            <div class="gzh EasySlide-animate" in="zoomIn" delay="1s">0</div>
+
+        </div>
+        <div class="EasySlide-groups groups idjn" gIndex="7">
+            <div class="imghead"></div>
+            <div class="imgqrcode"></div>
+
+
+
+            <div class="imgt imgt1 EasySlide-animate" in="fadeInUp"></div>
+            <div class="imgs imgs1 EasySlide-animate" in="fadeInUp"></div>
+
+            <div class="djn EasySlide-animate" in="zoomIn" delay=".5s">1</div>
+
+        </div>
+
+        <div class="EasySlide-groups groups ifuturecql ifutureyz" gIndex="8">
+            <div class="imghead"></div>
+            <div class="imgqrcode"></div>
+
+            <div class="imgt imgt8 EasySlide-animate" in="fadeInUp"></div>
+            <div class="imgs imgs8 EasySlide-animate" in="fadeInUp"></div>
+
+            <div class="futurecql EasySlide-animate" in="zoomIn" delay=".5s">0</div>
+            <div class="futureyz EasySlide-animate" in="zoomIn" delay="1s">0</div>
+            <div class="futureplace EasySlide-animate" in="zoomIn" delay="1.5s">还没想到</div>
+        </div>
+    </div>
+    <div id="arrow"></div>
+    <div id="frame2" index="2" class="EasySlide-slides slides">
+        <div class="EasySlide-groups groups" gIndex="0" allowswipe="prev">
+            <div class="imgheader EasySlide-animate" in="zoomIn"></div>
+            <div class="imgfooter EasySlide-animate" in="fadeInUp" delay=".5s"><img src="images/footer.png" /></div>
+            <div id="shareCircleBtn" class="imgshare" onclick="utils.show(utils.$('weixin_bg'))"></div>
+
+        </div>
+    </div>
+    <div id="weixin_bg" onclick="utils.hide(utils.$('weixin_bg'))"><p class="share_icon"><img src="images/share.png" width="100"/></p></div>
+</div>
+<div id="loadingWrap">
+    <div>年度账单已经生成完毕<br/>加载中，请稍后</div>
+    <div id="loading">0%</div>
+</div>
+</body>
+<script>
+    var getRequest = function () {
+        var url = location.search; //获取url中"?"符后的字串
+        url = decodeURI(decodeURI(location.search));
+        console.log(url);
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for(var i = 0; i < strs.length; i ++) {
+                theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+
+
+
+    var resourceImg = [
+        "background.jpg", "head.png", "header.png", "openbutton.png", "page1.jpg", "qrcode.png", "share.png",
+        "sharebtn.png", "footer.png", "new.png", "s0.png", "s1.png", "s2.png", "s3.png", "s4.png", "s5.png",
+        "s6.png", "s7.png", "s8.png", "t0.png", "t1.png", "t2.png", "t3.png", "t4.png", "t5.png",
+        "t6.png", "t7.png", "t8.png", "arrow.png"
+    ];
+
+    var urlinfo = ["futurecql", "futureyz", "futureplace", "djn", "gzh", "cqkt", "zhandou", "yuanzheng", "cql",
+    "shanghai", "zuiyuan", "kaixiao", "huale", "caishui", "daidao"]
+    var urlrequest = [ "djn", "gzh", "cqkt", "zhandou", "yuanzheng",
+        "shanghai", "huale", "daidao", "futurecql"]
+
+
+    var utils = EasySlide.utils;
+    var arrow = utils.$('arrow');
+    var myrequest = getRequest();
+    if (myrequest.hasOwnProperty("username"))
+        document.title = myrequest["username"] + "的2017申花年度账单";
+    if (myrequest.hasOwnProperty("zhandou"))
+        myrequest["cql"] = parseInt(myrequest["zhandou"], 10) * 5
+    else
+        myrequest["cql"] = 0;
+    urlinfo.forEach(function(e) {
+        if (myrequest[e]) utils.getByClsName(e)[0].innerHTML = myrequest[e]
+    })
+    urlrequest.forEach(function(e) {
+       if (!myrequest.hasOwnProperty(e)) {
+           //console.log(e)
+           if (document.getElementsByClassName('i'+e).length > 0)
+            utils.$('frame1').removeChild(document.getElementsByClassName('i'+e)[0])
+       }
+    })
+    var domcount = 0;
+    document.querySelectorAll("#frame1>div").forEach(function(i){
+        i.setAttribute("gindex",""+domcount);
+        console.log(i)
+        domcount++;
+    });
+
+
+    var page = new EasySlide({
+        wrapAll: "wrapAll",
+        // subpptObjects: [{
+        //   wrapDiv: "subppt1",
+        //   imgs: ["images/desktop/1.jpg", "images/desktop/2.jpg", "images/desktop/3.jpg", "images/desktop/4.jpg", "images/desktop/5.jpg"],
+        //   parentNum:
+        // }]
+    });
+
+    page.loader(resourceImg.map(function (item) {
+        return 'images/' + item;
+    }));
+
+    page.on('progress', function (percent) {
+        console.log(percent);
+        utils.$('loading').innerHTML = percent + '%';
+    });
+
+    page.on('loaded', function () {
+        utils.hide(utils.$('loadingWrap'));
+    });
+
+    page.on('slide-switchEnd', function (allowswipe) {
+        console.log(allowswipe);
+        if (allowswipe === "no" || allowswipe === "prev") {
+            utils.hide(arrow);
+        } else {
+            utils.show(arrow);
+        }
+    });
+</script>
+</html>
